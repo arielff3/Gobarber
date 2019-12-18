@@ -1,0 +1,62 @@
+Organização da estrutura -
+
+src/server = Arquivo responsável por criar um servidor local com o metodo express.listen
+
+src/routes = Arquivo responsável por criar as rotas do projeto
+
+src/app.js = Arquivo responsável por configurar o servidor express
+
+src/config = Pasta onde irá ficar a maioria das configurações da aplicação
+
+src/config/database.js = configurações da base de dados (conexão)
+
+src/database = Pasta onde irá ficar tudo relativo ao banco de dados. Fora a configuração de conexão.
+
+src/app = Pasta onde irá ficar a maioria do código que envolve regra de negócio
+
+Controlller Methodos: index – Lista os dados da tabela
+                      show – Mostra um item específco
+                      create – Retorna a View para criar um item da tabela
+                      store – Salva o novo item na tabela
+                      edit – Retorna a View para edição do dado
+                      update – Salva a atualização do dado
+                      destroy – Remove o dado
+
+
+src/app/controller = O responsável por receber todas as requisições do usuário.
+                Seus métodos chamados actions são responsáveis
+                por uma página,controlando qual model usar e
+                qual view será mostrado ao usuário.
+src/app/controller/SessionController.js = Controller responsável pela criação da sessão do usuário
+e pela autenticação do mesmo usando o Yup.
+
+src/app/controller/UserController.js = Controller responsável pelo CRUD de usuários no banco de dados, validação
+de entrada com o Yup, e de saida, transformando o password em um hash com o Bcrypt
+
+
+Yup = lib usada para validar campos de entrada
+// Yup.object.shape(OBJETO COM AS VALIDAÇÕES) inicio do yup
+// .string() = Pq é uma string
+// .required() = Pq é obrigatório
+// .email() = Pq é um email
+// .min() = minimo
+
+JTW = lib usava para criação de tokens
+Promisyfy = Metódo responsável por transformar outro método em assincrono
+
+src/app/models = Sempre que você pensar em manipulação de dados,
+                 pense em model. Ele é responsável pela leitura e escrita de
+                 dados, e também de suas validações.
+
+src/app/models/User.js =
+
+src/database/index.js = Arquivo que irá carregar todos os models da aplicação
+
+src/middlewares/auth.js = responsável pela validação da sessão do usuário por
+meio do token verificando se ele é válido. O token vem por meio do header do usuário
+
+
+/.eskubtr.js = Arquivo de configuração do eslint
+/.prettierrc = Arquivo de configuração do prettierrc
+/.sequelizerc = Arquivo de configuração do sequelizerc
+/nodemon.js = Arquivo de configuração do nodemon para funcionar com o sucraze
